@@ -1,13 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./templates/**/*.html",
-    "./static/**/*.js",
-    // Otros paths según tu estructura
+    "./app/templates/**/*.html",
+    "./app/static/**/*.js",
   ],
   theme: {
-    extend: {},
+    extend: {
+      container: {
+        center: true,
+        padding: '1rem',
+      },
+    },
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          primary: "#1d4ed8",
+          secondary: "#4b5563",
+          accent: "#0ea5e9",
+        },
+      },
+    ],
+  },
 }
 

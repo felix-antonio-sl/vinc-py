@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from . import db
 
 class ChatSession(db.Model):
@@ -7,7 +7,7 @@ class ChatSession(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     session_id = db.Column(db.String(50), unique=True, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now(datetime.UTC))
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
     messages = db.relationship('ChatMessage', backref='session', lazy=True)
 
 class ChatMessage(db.Model):
@@ -18,7 +18,7 @@ class ChatMessage(db.Model):
     session_id = db.Column(db.Integer, db.ForeignKey('chat_sessions.id'), nullable=False)
     role = db.Column(db.String(20), nullable=False)  # 'user' o 'assistant'
     content = db.Column(db.Text, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.now(datetime.UTC))
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))
 
     def to_dict(self):
         """Convertir mensaje a diccionario"""

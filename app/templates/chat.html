@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chatbot FNDR 8%</title>
     <link
       href="{{ url_for('static', filename='css/style.css') }}"
@@ -12,33 +13,30 @@
       defer
     ></script>
   </head>
-  <body class="bg-gray-100">
-    <div class="flex justify-center items-center h-screen">
-      <div class="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-        <h2 class="text-2xl font-bold mb-4 text-center">
-          Asistente de Rendición
-        </h2>
-        <div
-          id="chat-window"
-          class="h-80 overflow-y-scroll mb-4 bg-gray-50 p-4 rounded"
-        >
-          <!-- Mensajes del chat se mostrarán aquí -->
+  <body class="min-h-screen bg-base-200">
+    <div class="container mx-auto px-4 py-8 flex justify-center items-center min-h-screen">
+      <div class="card w-full max-w-2xl bg-base-100 shadow-xl">
+        <div class="card-body">
+          <h2 class="card-title justify-center text-2xl font-bold mb-6">
+            Asistente de Rendición FNDR 8%
+          </h2>
+          
+          <div id="chat-window" 
+               class="h-[500px] overflow-y-auto mb-6 rounded-box bg-base-200 p-4 space-y-4">
+          </div>
+
+          <form id="chat-form" class="input-group">
+            <input type="text"
+                   id="message-input"
+                   class="input input-bordered flex-1"
+                   placeholder="Escribe tu mensaje..."
+                   required />
+            <button type="submit" 
+                    class="btn btn-primary">
+              Enviar
+            </button>
+          </form>
         </div>
-        <form id="chat-form" class="flex">
-          <input
-            type="text"
-            id="message-input"
-            class="flex-grow border border-gray-300 rounded-l px-4 py-2 focus:outline-none"
-            placeholder="Escribe tu mensaje..."
-            required
-          />
-          <button
-            type="submit"
-            class="bg-blue-500 text-white px-4 py-2 rounded-r hover:bg-blue-600"
-          >
-            Enviar
-          </button>
-        </form>
       </div>
     </div>
 
@@ -118,10 +116,30 @@
       });
 
       // Función para agregar mensajes al chat
-      function appendMessage(author, message, classes) {
+      function appendMessage(author, message, type = 'user') {
         const messageElement = document.createElement("div");
-        messageElement.className = `mb-2 p-2 rounded ${classes}`;
-        messageElement.innerHTML = `<strong>${author}:</strong> ${message}`;
+        const classes = type === 'user' 
+          ? 'chat chat-end' 
+          : type === 'assistant' 
+          ? 'chat chat-start' 
+          : 'chat chat-start text-error';
+
+        messageElement.className = classes;
+        messageElement.innerHTML = `
+          <div class="chat-header opacity-50">
+            ${author}
+          </div>
+          <div class="chat-bubble ${
+            type === 'user' 
+              ? 'chat-bubble-primary' 
+              : type === 'assistant'
+              ? 'chat-bubble-accent'
+              : 'chat-bubble-error'
+          }">
+            ${message}
+          </div>
+        `;
+        
         chatWindow.appendChild(messageElement);
         chatWindow.scrollTop = chatWindow.scrollHeight;
       }
