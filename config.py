@@ -6,6 +6,9 @@ load_dotenv()
 
 class Config:
     """Configuración base"""
+    PREFERRED_URL_SCHEME = 'https'
+    SESSION_COOKIE_SECURE = True
+    REMEMBER_COOKIE_SECURE = True
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev-key-change-in-prod')
     SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
