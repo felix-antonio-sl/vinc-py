@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Anexo N°6 (Obligatorio) - Acta de Entrega de Implementación a Terceros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3, h4 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .add-row-btn {
+            background-color: #17a2b8;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .add-row-btn:hover {
+            background-color: #138496;
+        }
+        .remove-row-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 4px 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .remove-row-btn:hover {
+            background-color: #c82333;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .required::after {
+            content: " *";
+            color: red;
+        }
+        .small-text {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ANEXO N°6 (OBLIGATORIO)</h1>
+        
+        <h2>ACTA DE ENTREGA DE IMPLEMENTACIÓN A TERCEROS</h2>
+        
+        <p>Corresponde a personas que reciben la implementación básica, identificados con nombre completo y RUT. Implementos entregados a menores de edad deben ser firmados por un adulto responsable.</p>
+        
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <h3>Datos de la Entrega:</h3>
+            <div class="form-group">
+                <label for="nombre_iniciativa">Nombre de la iniciativa <span class="required"></span></label>
+                <input type="text" id="nombre_iniciativa" name="nombre_iniciativa" required>
+            </div>
+            <div class="form-group">
+                <label for="codigo_fndr">Código FNDR <span class="required"></span></label>
+                <input type="text" id="codigo_fndr" name="codigo_fndr" required>
+            </div>
+            <div class="form-group">
+                <label for="organizacion_responsable">Organización responsable <span class="required"></span></label>
+                <input type="text" id="organizacion_responsable" name="organizacion_responsable" required>
+            </div>
+            <div class="form-group">
+                <label for="numero_fecha_documento">Número y fecha del documento <span class="required"></span></label>
+                <input type="text" id="numero_fecha_documento" name="numero_fecha_documento" required>
+            </div>
+            <div class="form-group">
+                <label for="monto">Monto <span class="required"></span></label>
+                <input type="number" id="monto" name="monto" min="0" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha_entrega">Fecha de entrega de la implementación <span class="required"></span></label>
+                <input type="date" id="fecha_entrega" name="fecha_entrega" required>
+            </div>
+            
+            <p>Se debe adjuntar lista de entrega a beneficiarios en caso que corresponda este anexo.</p>
+            
+            <hr>
+            
+            <h3>Lista de Entrega de Implementación a Terceros:</h3>
+            <table id="entrega-table">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombre y Apellidos</th>
+                        <th>RUT</th>
+                        <th>Descripción del o los implementos entregados</th>
+                        <th>Firma conforme</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><input type="text" name="nombre_apellidos[]" required></td>
+                        <td><input type="text" name="rut[]" required></td>
+                        <td><input type="text" name="descripcion_implementos[]" required></td>
+                        <td><input type="file" name="firma_conforme[]" accept="image/*,application/pdf" required></td>
+                        <td><button type="button" class="remove-row-btn" onclick="eliminarFila(this)">Eliminar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="add-row-btn" onclick="agregarFila()">Agregar Fila</button>
+            
+            <hr>
+            
+            <p><strong>Nota:</strong> Adjunte cuantas planillas sean necesarias para completar la totalidad de la entrega.</p>
+            
+            <div class="form-group">
+                <label for="nombre_firma_prestador">Nombre representante legal <span class="required"></span></label>
+                <input type="text" id="nombre_firma_prestador" name="nombre_firma_prestador" required>
+            </div>
+            <div class="form-group">
+                <label for="firma_timbre">Firma y Timbre <span class="required"></span></label>
+                <input type="file" id="firma_timbre" name="firma_timbre" accept="image/*,application/pdf" required>
+                <small class="small-text">Suba su firma y timbre en formato JPG, PNG o PDF</small>
+            </div>
+            
+            <hr>
+            
+            <button type="submit" class="submit-btn">Enviar Acta de Entrega</button>
+        </form>
+    </div>
+
+    <script>
+        function agregarFila() {
+            const tableBody = document.getElementById('entrega-table').getElementsByTagName('tbody')[0];
+            const rowCount = tableBody.rows.length + 1;
+            const newRow = document.createElement('tr');
+            
+            newRow.innerHTML = `
+                <td>${rowCount}</td>
+                <td><input type="text" name="nombre_apellidos[]" required></td>
+                <td><input type="text" name="rut[]" required></td>
+                <td><input type="text" name="descripcion_implementos[]" required></td>
+                <td><input type="file" name="firma_conforme[]" accept="image/*,application/pdf" required></td>
+                <td><button type="button" class="remove-row-btn" onclick="eliminarFila(this)">Eliminar</button></td>
+            `;
+            
+            tableBody.appendChild(newRow);
+        }
+
+        function eliminarFila(button) {
+            const row = button.parentElement.parentElement;
+            const tableBody = row.parentElement;
+            tableBody.removeChild(row);
+            actualizarNumeracion();
+        }
+
+        function actualizarNumeracion() {
+            const tableBody = document.getElementById('entrega-table').getElementsByTagName('tbody')[0];
+            const rows = tableBody.getElementsByTagName('tr');
+            for (let i = 0; i < rows.length; i++) {
+                const cell = rows[i].getElementsByTagName('td')[0];
+                cell.textContent = i + 1;
+            }
+        }
+    </script>
+</body>
+</html>

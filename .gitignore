@@ -1,0 +1,112 @@
+# Entornos virtuales
+venv/
+env/
+ENV/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# IDEs y editores
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+
+# Logs y bases de datos
+*.log
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+*.dump
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Archivos de configuración local
+instance/
+.env.local
+.env.*.local
+
+# Archivos de caché
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Archivos temporales
+tmp/
+temp/
+
+# Archivos de dependencias
+node_modules/
+package-lock.json
+yarn.lock
+
+# Archivos de producción
+/static/
+/media/
+/uploads/
+
+# Archivos específicos del proyecto
+*.bak
+*.tmp
+*.temp
+.env.production
+.env.development
+
+# Archivos de migración de base de datos
+migrations/versions/
+
+# Archivos de sesión
+.session/
+sessions/
+
+# Archivos de OpenAI
+.openai/
+openai.key
+
+# Archivos de documentación generados
+docs/_build/
+site/
+
+# Archivos de certificados y claves
+*.pem
+*.key
+*.crt
+*.cer
+*.p12

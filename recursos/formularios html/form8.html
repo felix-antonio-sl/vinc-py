@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Anexo N°8 (Obligatorio) - Informe Final de Gestión</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+            text-align: center;
+        }
+        p, li {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 5px;
+        }
+        .radio-group label {
+            font-weight: normal;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 30px auto 0;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .required::after {
+            content: " *";
+            color: red;
+        }
+        .small-text {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ANEXO N°8 (OBLIGATORIO)</h1>
+        <h2>INFORME FINAL DE GESTIÓN</h2>
+        
+        <form action="#" method="POST">
+            <h3>Objetivos del Proyecto:</h3>
+            <div class="form-group">
+                <p>En opinión de la institución, ¿se logró dar cumplimiento a los objetivos del proyecto?</p>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="cumplimiento_objetivos" value="si" required> Sí
+                    </label>
+                    <label>
+                        <input type="radio" name="cumplimiento_objetivos" value="no" required> No
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="detalle_objetivos">Detalle y fundamento de la respuesta anterior <span class="required"></span></label>
+                <textarea id="detalle_objetivos" name="detalle_objetivos" rows="5" required></textarea>
+            </div>
+            
+            <hr>
+            
+            <h3>Beneficiarios:</h3>
+            <div class="form-group">
+                <label>Detalle el número de beneficiarios directos de la ejecución de la iniciativa (debe estar acorde a la lista de asistencia y otros medios de verificación):</label>
+                <div class="form-group">
+                    <label for="beneficiarios_mujeres">Mujeres:</label>
+                    <input type="number" id="beneficiarios_mujeres" name="beneficiarios_mujeres" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="beneficiarios_hombres">Hombres:</label>
+                    <input type="number" id="beneficiarios_hombres" name="beneficiarios_hombres" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="beneficiarios_total">Total de beneficiarios:</label>
+                    <input type="number" id="beneficiarios_total" name="beneficiarios_total" min="0" readonly>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <h3>Observaciones, Sugerencias y Comentarios Finales:</h3>
+            <div class="form-group">
+                <label for="observaciones">Realice cualquier tipo de observación, sugerencias, manifieste cuáles fueron las principales dificultades para la realización del proyecto, principales logros, entre otros comentarios. <span class="required"></span></label>
+                <textarea id="observaciones" name="observaciones" rows="5" required></textarea>
+            </div>
+            
+            <hr>
+            
+            <h3>Evaluación relación Gobierno Regional de Ñuble - Institución beneficiaria:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criterios</th>
+                        <th>Nota (1 a 7)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1. Oportuna convocatoria a las actividades de capacitación</td>
+                        <td>
+                            <input type="number" name="criterio1" min="1" max="7" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2. Calidad de la información entregada durante el proceso de postulación</td>
+                        <td>
+                            <input type="number" name="criterio2" min="1" max="7" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3. Rapidez en la respuesta entregada por los profesionales a las consultas formuladas</td>
+                        <td>
+                            <input type="number" name="criterio3" min="1" max="7" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4. Disposición para responder dudas durante el proceso de ejecución y rendición</td>
+                        <td>
+                            <input type="number" name="criterio4" min="1" max="7" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5. Comunicación con el Gobierno Regional para la coordinación de actividad de lanzamiento/cierre</td>
+                        <td>
+                            <input type="number" name="criterio5" min="1" max="7" required>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <hr>
+            
+            <div class="form-group">
+                <label for="nombre_representante_legal">Nombre representante legal <span class="required"></span></label>
+                <input type="text" id="nombre_representante_legal" name="nombre_representante_legal" required>
+            </div>
+            <div class="form-group">
+                <label for="firma_timbre">Firma y Timbre <span class="required"></span></label>
+                <input type="file" id="firma_timbre" name="firma_timbre" accept="image/*,application/pdf" required>
+                <small class="small-text">Suba su firma y timbre en formato JPG, PNG o PDF</small>
+            </div>
+            
+            <button type="submit" class="submit-btn">Enviar Informe Final de Gestión</button>
+        </form>
+    </div>
+
+    <script>
+        // Calcula el total de beneficiarios cuando cambian los valores de mujeres u hombres
+        const mujeresInput = document.getElementById('beneficiarios_mujeres');
+        const hombresInput = document.getElementById('beneficiarios_hombres');
+        const totalInput = document.getElementById('beneficiarios_total');
+
+        function calcularTotal() {
+            const mujeres = parseInt(mujeresInput.value) || 0;
+            const hombres = parseInt(hombresInput.value) || 0;
+            totalInput.value = mujeres + hombres;
+        }
+
+        mujeresInput.addEventListener('input', calcularTotal);
+        hombresInput.addEventListener('input', calcularTotal);
+    </script>
+</body>
+</html>

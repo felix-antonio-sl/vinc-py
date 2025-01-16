@@ -1,0 +1,11 @@
+Flask
+psycopg2-binary
+python-dotenv
+openai
+gunicorn
+python-jose
+SQLAlchemy
+alembic
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Cors

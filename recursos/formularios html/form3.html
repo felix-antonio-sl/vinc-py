@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Anexo N°3 (Obligatorio) - Medios de Verificación de Ejecución de Iniciativa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="file"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .radio-group input {
+            margin-right: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        .small-text {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ANEXO N°3 (OBLIGATORIO)</h1>
+        
+        <h2>MEDIOS DE VERIFICACIÓN DE EJECUCIÓN DE INICIATIVA</h2>
+        
+        <p>Adjuntar imágenes, audios, videos, entre otros según correspondan que hagan cuenta de la correcta ejecución de la iniciativa en los ítems de Honorarios, Equipamiento, Gestión y Producción y Difusión.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Medio de Verificación</th>
+                    <th>Sí</th>
+                    <th>No</th>
+                    <th>Adjuntar Archivo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Imágenes</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_imagenes" value="si" onclick="toggleFileInput('imagenes')"> Sí
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_imagenes" value="no" onclick="toggleFileInput('imagenes')"> No
+                        </label>
+                    </td>
+                    <td>
+                        <input type="file" id="imagenes" name="imagenes" accept="image/*" class="hidden">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Fotografías</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_fotografias" value="si" onclick="toggleFileInput('fotografias')"> Sí
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_fotografias" value="no" onclick="toggleFileInput('fotografias')"> No
+                        </label>
+                    </td>
+                    <td>
+                        <input type="file" id="fotografias" name="fotografias" accept="image/*" class="hidden">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Facturas</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_facturas" value="si" onclick="toggleFileInput('facturas')"> Sí
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_facturas" value="no" onclick="toggleFileInput('facturas')"> No
+                        </label>
+                    </td>
+                    <td>
+                        <input type="file" id="facturas" name="facturas" accept=".pdf,.jpg,.png" class="hidden">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Boletas de Honorarios</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_boletas" value="si" onclick="toggleFileInput('boletas')"> Sí
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_boletas" value="no" onclick="toggleFileInput('boletas')"> No
+                        </label>
+                    </td>
+                    <td>
+                        <input type="file" id="boletas" name="boletas" accept=".pdf,.jpg,.png" class="hidden">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Listados de Asistencias</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_listados" value="si" onclick="toggleFileInput('listados')"> Sí
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_listados" value="no" onclick="toggleFileInput('listados')"> No
+                        </label>
+                    </td>
+                    <td>
+                        <input type="file" id="listados" name="listados" accept=".pdf,.jpg,.png" class="hidden">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Videos</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_videos" value="si" onclick="toggleFileInput('videos')"> Sí
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_videos" value="no" onclick="toggleFileInput('videos')"> No
+                        </label>
+                    </td>
+                    <td>
+                        <input type="file" id="videos" name="videos" accept="video/*" class="hidden">
+                    </td>
+                </tr>
+                <tr>
+                    <td>CD de Respaldo</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_cd" value="si" onclick="toggleFileInput('cd_respaldo')"> Sí
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_cd" value="no" onclick="toggleFileInput('cd_respaldo')"> No
+                        </label>
+                    </td>
+                    <td>
+                        <input type="file" id="cd_respaldo" name="cd_respaldo" accept=".pdf,.jpg,.png" class="hidden">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Audios (ej. Difusión radial)</td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_audios" value="si" onclick="toggleFileInput('audios')"> Sí
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_audios" value="no" onclick="toggleFileInput('audios')"> No
+                        </label>
+                    </td>
+                    <td>
+                        <input type="file" id="audios" name="audios" accept="audio/*" class="hidden">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Otros: <input type="text" id="otros_text" name="otros_text" placeholder="Especificar"></td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_otros" value="si" onclick="toggleFileInput('otros')"> Sí
+                        </label>
+                    </td>
+                    <td>
+                        <label>
+                            <input type="radio" name="verificacion_otros" value="no" onclick="toggleFileInput('otros')"> No
+                        </label>
+                    </td>
+                    <td>
+                        <input type="file" id="otros" name="otros" accept=".pdf,.jpg,.png,audio/*,video/*" class="hidden">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <hr>
+        
+        <div class="form-group">
+            <label for="nombre_representante_legal">Nombre Representante Legal <span style="color:red;">*</span></label>
+            <input type="text" id="nombre_representante_legal" name="nombre_representante_legal" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="firma_timbre_representante">Firma y Timbre Representante Legal <span style="color:red;">*</span></label>
+            <input type="file" id="firma_timbre_representante" name="firma_timbre_representante" accept="image/*,application/pdf" required>
+            <small class="small-text">Suba su firma y timbre en formato JPG, PNG o PDF</small>
+        </div>
+        
+        <hr>
+        
+        <button type="submit" class="submit-btn">Enviar Medios de Verificación</button>
+    </div>
+
+    <script>
+        function toggleFileInput(id) {
+            const fileInput = document.getElementById(id);
+            const radioYes = document.querySelector(`input[name="verificacion_${id}"][value="si"]`);
+            if (radioYes && radioYes.checked) {
+                fileInput.classList.remove('hidden');
+                fileInput.required = true;
+            } else {
+                fileInput.classList.add('hidden');
+                fileInput.value = '';
+                fileInput.required = false;
+            }
+        }
+
+        // Initialize file inputs based on pre-selected options (if any)
+        document.addEventListener('DOMContentLoaded', () => {
+            const verificationMethods = [
+                'imagenes', 'fotografias', 'facturas', 'boletas', 
+                'listados', 'videos', 'cd_respaldo', 'audios', 'otros'
+            ];
+
+            verificationMethods.forEach(id => {
+                const radioYes = document.querySelector(`input[name="verificacion_${id}"][value="si"]`);
+                if (radioYes && radioYes.checked) {
+                    toggleFileInput(id);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Anexo N°2 (Obligatorio) - Informe Financiero Rendición de Subvención FNDR 8%</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3, h4 {
+            color: #333;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .inline-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .required::after {
+            content: " *";
+            color: red;
+        }
+        .small-text {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ANEXO N°2 (OBLIGATORIO)</h1>
+        
+        <h2>INFORME FINANCIERO RENDICIÓN DE SUBVENCIÓN FNDR 8%</h2>
+        
+        <h3>1. Adjuntar:</h3>
+        <p>Copia de libreta bancaria o cartola que refleje la transferencia en la cuenta de la institución.</p>
+        
+        <hr>
+        
+        <h3>2. Resumen financiero de la presente rendición (en pesos $):</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Detalle del ítem</th>
+                    <th>Monto aprobado</th>
+                    <th>Monto de la presente rendición</th>
+                    <th>Saldo ($)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01 - Gastos honorarios</td>
+                    <td><input type="number" name="gastos_honorarios_aprobado" min="0" step="0.01" required></td>
+                    <td><input type="number" name="gastos_honorarios_rendicion" min="0" step="0.01" required></td>
+                    <td><input type="number" name="gastos_honorarios_saldo" min="0" step="0.01" readonly></td>
+                </tr>
+                <tr>
+                    <td>02 - Gastos equipamiento</td>
+                    <td><input type="number" name="gastos_equipamiento_aprobado" min="0" step="0.01" required></td>
+                    <td><input type="number" name="gastos_equipamiento_rendicion" min="0" step="0.01" required></td>
+                    <td><input type="number" name="gastos_equipamiento_saldo" min="0" step="0.01" readonly></td>
+                </tr>
+                <tr>
+                    <td>03 - Gastos de gestión y producción</td>
+                    <td><input type="number" name="gastos_gestion_aprobado" min="0" step="0.01" required></td>
+                    <td><input type="number" name="gastos_gestion_rendicion" min="0" step="0.01" required></td>
+                    <td><input type="number" name="gastos_gestion_saldo" min="0" step="0.01" readonly></td>
+                </tr>
+                <tr>
+                    <td>04 - Gastos de difusión</td>
+                    <td><input type="number" name="gastos_difusion_aprobado" min="0" step="0.01" required></td>
+                    <td><input type="number" name="gastos_difusion_rendicion" min="0" step="0.01" required></td>
+                    <td><input type="number" name="gastos_difusion_saldo" min="0" step="0.01" readonly></td>
+                </tr>
+                <tr>
+                    <td><strong>Totales</strong></td>
+                    <td><input type="number" name="totales_aprobado" min="0" step="0.01" readonly></td>
+                    <td><input type="number" name="totales_rendicion" min="0" step="0.01" readonly></td>
+                    <td><input type="number" name="totales_saldo" min="0" step="0.01" readonly></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <hr>
+        
+        <h3>3. Detalle por documento rendido:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ítem que corresponde</th>
+                    <th>N° de factura/boleta</th>
+                    <th>Fecha</th>
+                    <th>Detalle del gasto (según presupuesto aprobado)</th>
+                    <th>Monto (en pesos)</th>
+                </tr>
+            </thead>
+            <tbody id="detalle-documentos">
+                <tr>
+                    <td><input type="text" name="detalle_corresponde[]" required></td>
+                    <td><input type="text" name="numero_factura[]" required></td>
+                    <td><input type="date" name="fecha_factura[]" required></td>
+                    <td><input type="text" name="detalle_gasto[]" required></td>
+                    <td><input type="number" name="monto_gasto[]" min="0" step="0.01" required></td>
+                </tr>
+                <!-- Se pueden agregar más filas según sea necesario -->
+            </tbody>
+        </table>
+        <button type="button" onclick="agregarFila()">Agregar Fila</button>
+        
+        <hr>
+        
+        <h3>4. Documentos importantes a considerar y que se deben adjuntar:</h3>
+        <ul>
+            <li>Factura y/o boleta de honorarios según corresponda.</li>
+            <li>Formulario 29 del SII de boleta de honorarios según corresponda.</li>
+            <li>Comprobante de egreso (voucher o comprobante de depósito, formato tipo o factura que señale con timbrado de “CANCELADO” o “PAGADO” con la fecha de pago en caso de que la factura venga a crédito).</li>
+        </ul>
+        
+        <hr>
+        
+        <h2>4. Reintegro de saldo de recursos:</h2>
+        <div class="form-group">
+            <label for="nombre_iniciativa_reintegro">Nombre de la iniciativa <span class="required"></span></label>
+            <input type="text" id="nombre_iniciativa_reintegro" name="nombre_iniciativa_reintegro" required>
+        </div>
+        <div class="form-group">
+            <label for="codigo_fndr_reintegro">Código FNDR <span class="required"></span></label>
+            <input type="text" id="codigo_fndr_reintegro" name="codigo_fndr_reintegro" required>
+        </div>
+        <div class="form-group">
+            <label for="organizacion_responsable_reintegro">Organización responsable <span class="required"></span></label>
+            <input type="text" id="organizacion_responsable_reintegro" name="organizacion_responsable_reintegro" required>
+        </div>
+        <div class="form-group">
+            <label for="rut_organizacion_reintegro">RUT organización <span class="required"></span></label>
+            <input type="text" id="rut_organizacion_reintegro" name="rut_organizacion_reintegro" required>
+        </div>
+        <div class="form-group">
+            <label for="rut_representante_reintegro">RUT representante legal <span class="required"></span></label>
+            <input type="text" id="rut_representante_reintegro" name="rut_representante_reintegro" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha_transferencia_reintegro">Fecha de transferencia <span class="required"></span></label>
+            <input type="date" id="fecha_transferencia_reintegro" name="fecha_transferencia_reintegro" required>
+        </div>
+        
+        <hr>
+        
+        <h3>Resumen general:</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Detalle</th>
+                    <th>Monto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Monto transferido</td>
+                    <td><input type="number" name="monto_transferido" min="0" step="0.01" required></td>
+                </tr>
+                <tr>
+                    <td>Total rendido</td>
+                    <td><input type="number" name="total_rendido" min="0" step="0.01" required></td>
+                </tr>
+                <tr>
+                    <td>Total monto a reintegrar</td>
+                    <td><input type="number" name="total_reintegrar" min="0" step="0.01" required></td>
+                </tr>
+                <tr>
+                    <td><strong>Saldo final</strong></td>
+                    <td><input type="number" name="saldo_final" min="0" step="0.01" readonly></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <hr>
+        
+        <h3>Para aquellos proyectos que presenten monto a reintegrar por gastos rechazados y/o saldo no ejecutado, se solicita depositar dichos recursos en:</h3>
+        <div class="form-group">
+            <label for="banco_reintegro">Banco:</label>
+            <input type="text" id="banco_reintegro" name="banco_reintegro" value="Estado" readonly>
+        </div>
+        <div class="form-group">
+            <label for="cuenta_corriente_reintegro">Cuenta corriente:</label>
+            <input type="text" id="cuenta_corriente_reintegro" name="cuenta_corriente_reintegro" value="N° 52109000477" readonly>
+        </div>
+        <div class="form-group">
+            <label for="gobierno_regional_reintegro">Gobierno Regional de Ñuble:</label>
+            <input type="text" id="gobierno_regional_reintegro" name="gobierno_regional_reintegro" value="Gobierno Regional de Ñuble" readonly>
+        </div>
+        <div class="form-group">
+            <label for="rut_gobierno_reintegro">RUT:</label>
+            <input type="text" id="rut_gobierno_reintegro" name="rut_gobierno_reintegro" value="62.000.390-5" readonly>
+        </div>
+        
+        <hr>
+        
+        <div class="form-group">
+            <label for="motivos_reintegro">Motivos por reintegro:</label>
+            <textarea id="motivos_reintegro" name="motivos_reintegro" rows="4" required></textarea>
+        </div>
+        
+        <hr>
+        
+        <div class="form-group">
+            <label for="nombre_representante_legal">Nombre representante legal <span class="required"></span></label>
+            <input type="text" id="nombre_representante_legal" name="nombre_representante_legal" required>
+        </div>
+        <div class="form-group">
+            <label for="firma_timbre_representante">Firma y timbre <span class="required"></span></label>
+            <input type="file" id="firma_timbre_representante" name="firma_timbre_representante" accept="image/*,application/pdf" required>
+            <small class="small-text">Suba su firma y timbre en formato JPG, PNG o PDF</small>
+        </div>
+        
+        <p><strong>Nota:</strong> SE DEBEN ADJUNTAR COPIA DE COMPROBANTE DE TRANSFERENCIA AL GOBIERNO REGIONAL DE ÑUBLE</p>
+        
+        <hr>
+        
+        <h2>5. Comprobante de egreso de gastos a crédito:</h2>
+        <p><strong>(Para facturas que en su forma de pago aparezca CRÉDITO)</strong></p>
+        <p>Es obligatorio para entidades privadas para cada transferencia, compra o adquisición de servicios recibida. Sólo puede ser reemplazado por facturas emitidas con timbre de “Cancelado” o “Pagado” cuyo tipo de pago contenga al crédito.</p>
+        <p>Este documento deberá ser adjuntado con la factura que corresponda al gasto desembolsado por parte de la institución responsable.</p>
+        
+        <hr>
+        
+        <h3>Datos del proveedor y detalles del gasto:</h3>
+        <div class="form-group">
+            <label for="nombre_proveedor">Nombre del proveedor <span class="required"></span></label>
+            <input type="text" id="nombre_proveedor" name="nombre_proveedor" required>
+        </div>
+        <div class="form-group">
+            <label for="rut_proveedor">RUT del proveedor <span class="required"></span></label>
+            <input type="text" id="rut_proveedor" name="rut_proveedor" required>
+        </div>
+        <div class="form-group">
+            <label for="numero_factura_credito">N° factura <span class="required"></span></label>
+            <input type="text" id="numero_factura_credito" name="numero_factura_credito" required>
+        </div>
+        <div class="form-group">
+            <label for="institucion_responsable_credito">Institución responsable <span class="required"></span></label>
+            <input type="text" id="institucion_responsable_credito" name="institucion_responsable_credito" required>
+        </div>
+        <div class="form-group">
+            <label for="representante_legal_credito">Representante legal <span class="required"></span></label>
+            <input type="text" id="representante_legal_credito" name="representante_legal_credito" required>
+        </div>
+        <div class="form-group">
+            <label for="fecha_compra_credito">Fecha de compra o adquisición del producto <span class="required"></span></label>
+            <input type="date" id="fecha_compra_credito" name="fecha_compra_credito" required>
+        </div>
+        <div class="form-group">
+            <label for="detalle_producto_credito">Detalle del producto <span class="required"></span></label>
+            <input type="text" id="detalle_producto_credito" name="detalle_producto_credito" required>
+        </div>
+        <div class="form-group">
+            <label for="item_corresponde_credito">Ítem al cual corresponde <span class="required"></span></label>
+            <input type="text" id="item_corresponde_credito" name="item_corresponde_credito" required>
+        </div>
+        
+        <hr>
+        
+        <p>Quien (es) suscribe(n) el presente documento, declara(n) haber recibido conforme por parte de la institución responsable el monto de $ <input type="number" name="monto_recibido" min="0" step="0.01" required>, para la compra o adquisición del producto o servicio anteriormente señalado.</p>
+        
+        <hr>
+        
+        <h3>Firmas:</h3>
+        <div class="form-group">
+            <label for="firma_proveedor">Firma y timbre proveedor de producto o servicio <span class="required"></span></label>
+            <input type="file" id="firma_proveedor" name="firma_proveedor" accept="image/*,application/pdf" required>
+            <small class="small-text">Suba la firma y timbre en formato JPG, PNG o PDF</small>
+        </div>
+        <div class="form-group">
+            <label for="firma_representante">Firma y timbre representante legal <span class="required"></span></label>
+            <input type="file" id="firma_representante" name="firma_representante" accept="image/*,application/pdf" required>
+            <small class="small-text">Suba la firma y timbre en formato JPG, PNG o PDF</small>
+        </div>
+        
+        <hr>
+        
+        <button type="submit" class="submit-btn">Enviar Informe Financiero</button>
+    </div>
+
+    <script>
+        function agregarFila() {
+            const tableBody = document.getElementById('detalle-documentos');
+            const newRow = document.createElement('tr');
+
+            newRow.innerHTML = `
+                <td><input type="text" name="detalle_corresponde[]" required></td>
+                <td><input type="text" name="numero_factura[]" required></td>
+                <td><input type="date" name="fecha_factura[]" required></td>
+                <td><input type="text" name="detalle_gasto[]" required></td>
+                <td><input type="number" name="monto_gasto[]" min="0" step="0.01" required></td>
+            `;
+            tableBody.appendChild(newRow);
+        }
+    </script>
+</body>
+</html>

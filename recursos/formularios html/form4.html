@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Anexo N°4 (Obligatorio) - Informe de Actividades de Honorarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3, h4, h5 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .add-section-btn,
+        .add-row-btn {
+            background-color: #17a2b8;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .add-section-btn:hover,
+        .add-row-btn:hover {
+            background-color: #138496;
+        }
+        .remove-section-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 6px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .remove-section-btn:hover {
+            background-color: #c82333;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .required::after {
+            content: " *";
+            color: red;
+        }
+        .small-text {
+            font-size: 12px;
+            color: #666;
+        }
+        .section {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            background-color: #fefefe;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ANEXO N°4 (OBLIGATORIO)</h1>
+        
+        <h2>INFORME DE ACTIVIDADES DE HONORARIOS</h2>
+        
+        <p>Corresponde a informe de actividades realizadas por profesores, monitores, coordinadores, técnicos, entrenadores, etc., según contrato y/o acuerdo suscrito con la organización o entidad pública.</p>
+        
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <h3>Datos Generales:</h3>
+            <div class="form-group">
+                <label for="codigo_fndr">Código FNDR <span class="required"></span></label>
+                <input type="text" id="codigo_fndr" name="codigo_fndr" required>
+            </div>
+            <div class="form-group">
+                <label for="institucion_responsable">Institución responsable <span class="required"></span></label>
+                <input type="text" id="institucion_responsable" name="institucion_responsable" required>
+            </div>
+            
+            <hr>
+            
+            <h3>Actividades:</h3>
+            <div id="actividades-container">
+                <div class="section actividad">
+                    <div class="section-header">
+                        <h4>Actividad 1</h4>
+                        <button type="button" class="remove-section-btn" onclick="eliminarActividad(this)">Eliminar</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="nombre_actividad[]">Nombre de la Actividad <span class="required"></span></label>
+                        <input type="text" name="nombre_actividad[]" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lugar_actividad[]">Lugar <span class="required"></span></label>
+                        <input type="text" name="lugar_actividad[]" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_actividad[]">Fecha <span class="required"></span></label>
+                        <input type="date" name="fecha_actividad[]" required>
+                    </div>
+                    
+                    <h4>Profesionales Participantes:</h4>
+                    <table class="profesionales-table">
+                        <thead>
+                            <tr>
+                                <th>Nombres y Apellidos</th>
+                                <th>RUT</th>
+                                <th>Rol</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="text" name="profesional_nombre_0[]" required></td>
+                                <td><input type="text" name="profesional_rut_0[]" required></td>
+                                <td><input type="text" name="profesional_rol_0[]" required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="add-row-btn" onclick="agregarFilaProfesional(this)">Agregar Profesional</button>
+                    
+                    <div class="form-group">
+                        <label>Resumen de la Actividad <span class="required"></span></label>
+                        <textarea name="resumen_actividad[]" rows="5" required></textarea>
+                    </div>
+                    
+                    <h4>Nómina de Beneficiarios(as) Directos:</h4>
+                    <table class="beneficiarios-table">
+                        <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Nombres y Apellidos</th>
+                                <th>RUT</th>
+                                <th>Teléfono</th>
+                                <th>Firma</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td><input type="text" name="beneficiario_nombre_0[]" required></td>
+                                <td><input type="text" name="beneficiario_rut_0[]" required></td>
+                                <td><input type="tel" name="beneficiario_telefono_0[]" pattern="[0-9]{9,15}" required></td>
+                                <td><input type="file" name="beneficiario_firma_0[]" accept="image/*,application/pdf" required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="add-row-btn" onclick="agregarFilaBeneficiario(this)">Agregar Beneficiario</button>
+                </div>
+            </div>
+            <button type="button" class="add-section-btn" onclick="agregarActividad()">Agregar Actividad</button>
+            
+            <hr>
+            
+            <p><strong>Nota:</strong> Adjunte las copias necesarias para completar la totalidad de la entrega.</p>
+            
+            <div class="form-group">
+                <label for="nombre_firma_prestador">Nombre y firma del prestador del servicio (Opcional el timbre):</label>
+                <input type="text" id="nombre_firma_prestador" name="nombre_firma_prestador">
+            </div>
+            <div class="form-group">
+                <label for="nombre_firma_representante">Nombre, firma y timbre representante legal <span class="required"></span></label>
+                <input type="text" id="nombre_firma_representante" name="nombre_firma_representante" required>
+                <input type="file" id="firma_timbre_representante" name="firma_timbre_representante" accept="image/*,application/pdf" required>
+                <small class="small-text">Suba su firma y timbre en formato JPG, PNG o PDF</small>
+            </div>
+            
+            <hr>
+            
+            <button type="submit" class="submit-btn">Enviar Informe de Actividades</button>
+        </form>
+    </div>
+
+    <script>
+        let actividadIndex = 0;
+
+        function agregarActividad() {
+            actividadIndex++;
+            const actividadesContainer = document.getElementById('actividades-container');
+            const actividadCount = actividadesContainer.getElementsByClassName('actividad').length + 1;
+
+            const actividadDiv = document.createElement('div');
+            actividadDiv.classList.add('section', 'actividad');
+            actividadDiv.innerHTML = `
+                <div class="section-header">
+                    <h4>Actividad ${actividadCount}</h4>
+                    <button type="button" class="remove-section-btn" onclick="eliminarActividad(this)">Eliminar</button>
+                </div>
+                
+                <div class="form-group">
+                    <label for="nombre_actividad[]">Nombre de la Actividad <span class="required"></span></label>
+                    <input type="text" name="nombre_actividad[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="lugar_actividad[]">Lugar <span class="required"></span></label>
+                    <input type="text" name="lugar_actividad[]" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha_actividad[]">Fecha <span class="required"></span></label>
+                    <input type="date" name="fecha_actividad[]" required>
+                </div>
+                
+                <h4>Profesionales Participantes:</h4>
+                <table class="profesionales-table">
+                    <thead>
+                        <tr>
+                            <th>Nombres y Apellidos</th>
+                            <th>RUT</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" name="profesional_nombre_${actividadIndex}[]" required></td>
+                            <td><input type="text" name="profesional_rut_${actividadIndex}[]" required></td>
+                            <td><input type="text" name="profesional_rol_${actividadIndex}[]" required></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="add-row-btn" onclick="agregarFilaProfesional(this)">Agregar Profesional</button>
+                
+                <div class="form-group">
+                    <label>Resumen de la Actividad <span class="required"></span></label>
+                    <textarea name="resumen_actividad[]" rows="5" required></textarea>
+                </div>
+                
+                <h4>Nómina de Beneficiarios(as) Directos:</h4>
+                <table class="beneficiarios-table">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Nombres y Apellidos</th>
+                            <th>RUT</th>
+                            <th>Teléfono</th>
+                            <th>Firma</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><input type="text" name="beneficiario_nombre_${actividadIndex}[]" required></td>
+                            <td><input type="text" name="beneficiario_rut_${actividadIndex}[]" required></td>
+                            <td><input type="tel" name="beneficiario_telefono_${actividadIndex}[]" pattern="[0-9]{9,15}" required></td>
+                            <td><input type="file" name="beneficiario_firma_${actividadIndex}[]" accept="image/*,application/pdf" required></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="add-row-btn" onclick="agregarFilaBeneficiario(this)">Agregar Beneficiario</button>
+            `;
+            actividadesContainer.appendChild(actividadDiv);
+            actualizarActividadHeaders();
+        }
+
+        function eliminarActividad(button) {
+            const actividadDiv = button.parentElement.parentElement;
+            actividadDiv.remove();
+            actualizarActividadHeaders();
+        }
+
+        function actualizarActividadHeaders() {
+            const actividades = document.getElementById('actividades-container').getElementsByClassName('actividad');
+            for (let i = 0; i < actividades.length; i++) {
+                const header = actividades[i].querySelector('.section-header h4');
+                header.textContent = `Actividad ${i + 1}`;
+            }
+        }
+
+        function agregarFilaProfesional(button) {
+            const profesionalesTable = button.previousElementSibling;
+            const tbody = profesionalesTable.querySelector('tbody');
+            const actividadDiv = button.closest('.actividad');
+            const actividadTables = Array.from(document.getElementsByClassName('actividad'));
+            const actividadIndexLocal = actividadTables.indexOf(actividadDiv);
+            const newRow = document.createElement('tr');
+
+            newRow.innerHTML = `
+                <td><input type="text" name="profesional_nombre_${actividadIndexLocal}[]" required></td>
+                <td><input type="text" name="profesional_rut_${actividadIndexLocal}[]" required></td>
+                <td><input type="text" name="profesional_rol_${actividadIndexLocal}[]" required></td>
+            `;
+            tbody.appendChild(newRow);
+        }
+
+        function agregarFilaBeneficiario(button) {
+            const beneficiariosTable = button.previousElementSibling;
+            const tbody = beneficiariosTable.querySelector('tbody');
+            const actividadDiv = button.closest('.actividad');
+            const actividadTables = Array.from(document.getElementsByClassName('actividad'));
+            const actividadIndexLocal = actividadTables.indexOf(actividadDiv);
+            const rowCount = tbody.rows.length + 1;
+            const newRow = document.createElement('tr');
+
+            newRow.innerHTML = `
+                <td>${rowCount}</td>
+                <td><input type="text" name="beneficiario_nombre_${actividadIndexLocal}[]" required></td>
+                <td><input type="text" name="beneficiario_rut_${actividadIndexLocal}[]" required></td>
+                <td><input type="tel" name="beneficiario_telefono_${actividadIndexLocal}[]" pattern="[0-9]{9,15}" required></td>
+                <td><input type="file" name="beneficiario_firma_${actividadIndexLocal}[]" accept="image/*,application/pdf" required></td>
+            `;
+            tbody.appendChild(newRow);
+        }
+    </script>
+</body>
+</html>

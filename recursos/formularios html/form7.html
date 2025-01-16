@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Anexo N°7 (Obligatorio) - Contrato Tipo de Prestación de Servicios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        p, li {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 20px;
+            overflow: auto;
+            white-space: pre-wrap;
+            font-family: inherit;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="file"] {
+            display: block;
+            margin-top: 10px;
+        }
+        .small-text {
+            font-size: 12px;
+            color: #666;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 30px auto 0;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .note {
+            font-size: 14px;
+            color: #555;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ANEXO N°7 (OBLIGATORIO)</h1>
+        <h2>CONTRATO TIPO DE PRESTACIÓN DE SERVICIOS</h2>
+        
+        <p>Este anexo funciona como plantilla para que los beneficiarios elaboren los contratos. A continuación, se presenta el modelo de contrato tipo de prestación de servicios:</p>
+        
+        <pre>
+En _________, a ____ de ______ del 2024, entre la organización funcional denominada: "____________",  
+RUT ____________, con domicilio en ________________________________, representada por Don (a) _______________________, RUN _________________, y Don (a) ____________________________, RUN _______________, domiciliado en ____________________________, Comuna de ________________, se ha convenido lo siguiente:
+
+1. Don (a) _________________________ se compromete a ejecutar __________ horas de trabajo durante los meses de __________ a __________, es decir, ______ horas por semana, desempeñando las siguientes funciones:  
+   - _______________________________________________________
+
+2. Para el proyecto denominado “_______________________________” que es financiado a través del Fondo Nacional de Desarrollo Regional 8%, Subvención ____________, año 2024 del Gobierno Regional y ejecutado por la mencionada organización.
+
+3. La organización se compromete a cancelar la suma de $___________ por concepto de la totalidad de horas comprometidas a trabajar en el presente contrato. El pago se hará efectivo una vez presentado el informe de prestación de servicios y la respectiva boleta de honorarios. Los impuestos que se retienen en entrega de la boleta de honorarios serán de exclusiva responsabilidad del prestador de servicios.
+
+4. El presente contrato tiene una duración de _______ meses a contar de la fecha estipulada en el mismo.
+
+5. El presente contrato se firma en tres ejemplares, quedando uno en poder del trabajador y dos en poder de la organización.
+
+---
+
+Nombre representante legal: ____________________________  
+Firma y Timbre:
+
+---
+
+Nombre prestador de servicios: ____________________________  
+Firma:
+        </pre>
+
+        <p>Por favor, utilice este modelo para elaborar los contratos necesarios durante la ejecución del proyecto.</p>
+        
+        <hr>
+        
+        <h3>Subir Contratos Elaborados</h3>
+        <p>A continuación, puede subir los contratos realizados durante la ejecución del proyecto:</p>
+        
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nombre_organizacion">Nombre de la Organización <span style="color:red;">*</span></label>
+                <input type="text" id="nombre_organizacion" name="nombre_organizacion" required>
+            </div>
+            <div class="form-group">
+                <label for="codigo_fndr">Código FNDR <span style="color:red;">*</span></label>
+                <input type="text" id="codigo_fndr" name="codigo_fndr" required>
+            </div>
+            <div class="form-group">
+                <label for="contratos">Subir Contratos (PDF, DOC, DOCX) <span style="color:red;">*</span></label>
+                <input type="file" id="contratos" name="contratos[]" accept=".pdf,.doc,.docx" multiple required>
+                <small class="small-text">Puede subir uno o más archivos. Tamaño máximo por archivo: 5MB.</small>
+            </div>
+            
+            <button type="submit" class="submit-btn">Enviar Contratos</button>
+        </form>
+        
+        <div class="note">
+            <p><strong>Nota:</strong> Asegúrese de que todos los contratos estén debidamente firmados y cumplan con los requisitos establecidos.</p>
+        </div>
+    </div>
+</body>
+</html>

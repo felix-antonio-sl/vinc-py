@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Anexo N°1 (Obligatorio) - Rendición de Subvención FNDR 8%</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .inline-group {
+            display: flex;
+            justify-content: space-between;
+        }
+        .inline-group .form-group {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .inline-group .form-group:last-child {
+            margin-right: 0;
+        }
+        .submit-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        .required::after {
+            content: " *";
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ANEXO N°1 (OBLIGATORIO)</h1>
+        
+        <h2>INFORME EJECUTIVO RENDICIÓN DE SUBVENCIÓN FNDR 8%</h2>
+        
+        <h3>A:</h3>
+        <p>DIVISIÓN DE DESARROLLO SOCIAL Y HUMANO – DIVISIÓN DE ADMINISTRACIÓN Y FINANZAS</p>
+        
+        <h3>DE:</h3>
+        <p>Adjunto se remite rendición de cuenta y respaldos pertinentes de la siguiente iniciativa financiada por el Fondo 8% FNDR Gobierno Regional de Ñuble:</p>
+        
+        <hr>
+        
+        <form action="#" method="POST">
+            <h3><strong>Fecha de presentación del informe:</strong></h3>
+            <div class="inline-group">
+                <div class="form-group">
+                    <label for="dia">Día <span style="color:red;">*</span></label>
+                    <input type="number" id="dia" name="dia" min="1" max="31" required>
+                </div>
+                <div class="form-group">
+                    <label for="mes">Mes <span style="color:red;">*</span></label>
+                    <select id="mes" name="mes" required>
+                        <option value="">Seleccione</option>
+                        <option value="enero">Enero</option>
+                        <option value="febrero">Febrero</option>
+                        <option value="marzo">Marzo</option>
+                        <option value="abril">Abril</option>
+                        <option value="mayo">Mayo</option>
+                        <option value="junio">Junio</option>
+                        <option value="julio">Julio</option>
+                        <option value="agosto">Agosto</option>
+                        <option value="septiembre">Septiembre</option>
+                        <option value="octubre">Octubre</option>
+                        <option value="noviembre">Noviembre</option>
+                        <option value="diciembre">Diciembre</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="anio">Año <span style="color:red;">*</span></label>
+                    <input type="number" id="anio" name="anio" min="2000" max="2100" required>
+                </div>
+            </div>
+            
+            <h3><strong>Período de ejecución:</strong></h3>
+            <div class="inline-group">
+                <div class="form-group">
+                    <label for="desde">Desde (día-mes-año) <span style="color:red;">*</span></label>
+                    <input type="date" id="desde" name="desde" required>
+                </div>
+                <div class="form-group">
+                    <label for="hasta">Hasta (día-mes-año) <span style="color:red;">*</span></label>
+                    <input type="date" id="hasta" name="hasta" required>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <h3><strong>Identificación de la iniciativa</strong></h3>
+            <p><strong>Marcar con X según corresponda:</strong></p>
+            
+            <div class="form-group">
+                <label for="codigo_subvencion">Código de subvención FNDR <span style="color:red;">*</span></label>
+                <input type="text" id="codigo_subvencion" name="codigo_subvencion" placeholder="Ejemplo: 2301AM0001" required>
+                <small>Informado en Convenio de Transferencia de recursos</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="tipo_subvencion">Tipo de subvención <span style="color:red;">*</span></label>
+                <select id="tipo_subvencion" name="tipo_subvencion" required>
+                    <option value="">Seleccione</option>
+                    <option value="tipo1">Tipo 1</option>
+                    <option value="tipo2">Tipo 2</option>
+                    <!-- Agrega más opciones según corresponda -->
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="nombre_iniciativa">Nombre de la iniciativa <span style="color:red;">*</span></label>
+                <input type="text" id="nombre_iniciativa" name="nombre_iniciativa" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Año de aprobación del financiamiento:</label>
+                <input type="number" value="2024" readonly>
+            </div>
+            
+            <div class="form-group">
+                <label for="institucion_responsable">Institución responsable <span style="color:red;">*</span></label>
+                <input type="text" id="institucion_responsable" name="institucion_responsable" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="representante_legal">Representante legal <span style="color:red;">*</span></label>
+                <input type="text" id="representante_legal" name="representante_legal" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="telefono_representante">Teléfono de contacto representante legal <span style="color:red;">*</span></label>
+                <input type="tel" id="telefono_representante" name="telefono_representante" pattern="[0-9]{9,15}" required>
+                <small>Ingrese un número válido</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="correo_representante">Correo electrónico representante legal <span style="color:red;">*</span></label>
+                <input type="email" id="correo_representante" name="correo_representante" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="nombre_encargado">Nombre encargado de rendición <span style="color:red;">*</span></label>
+                <input type="text" id="nombre_encargado" name="nombre_encargado" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="correo_encargado">Correo electrónico encargado rendición <span style="color:red;">*</span></label>
+                <input type="email" id="correo_encargado" name="correo_encargado" required>
+            </div>
+            
+            <div class="inline-group">
+                <div class="form-group">
+                    <label for="monto_aprobado">Monto aprobado subvención FNDR ($) <span style="color:red;">*</span></label>
+                    <input type="number" id="monto_aprobado" name="monto_aprobado" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="monto_rendicion">Monto de la presente rendición ($) <span style="color:red;">*</span></label>
+                    <input type="number" id="monto_rendicion" name="monto_rendicion" min="0" step="0.01" required>
+                </div>
+            </div>
+            
+            <hr>
+            
+            <div class="form-group">
+                <label for="nombre_representante">Nombre representante legal <span style="color:red;">*</span></label>
+                <input type="text" id="nombre_representante" name="nombre_representante" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="firma_timbre">Firma y timbre <span style="color:red;">*</span></label>
+                <input type="file" id="firma_timbre" name="firma_timbre" accept="image/*,application/pdf" required>
+                <small>Suba su firma y timbre en formato JPG, PNG o PDF</small>
+            </div>
+            
+            <hr>
+            
+            <button type="submit" class="submit-btn">Enviar Rendición</button>
+        </form>
+    </div>
+</body>
+</html>

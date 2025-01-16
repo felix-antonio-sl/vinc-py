@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Anexo N°4.B (Obligatorio) - Bitácora de Traslado de Beneficiarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2, h3, h4 {
+            color: #333;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        select,
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .add-row-btn {
+            background-color: #17a2b8;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .add-row-btn:hover {
+            background-color: #138496;
+        }
+        .submit-btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .required::after {
+            content: " *";
+            color: red;
+        }
+        .small-text {
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ANEXO N°4.B (OBLIGATORIO EN CASO DE INCURRIR EN EL GASTO DE SERVICIO DE TRASLADO)</h2>
+        
+        <h3>BITÁCORA DE TRASLADO DE BENEFICIARIOS</h3>
+        <p>Corresponde a personas que reciben el traslado producto de un servicio de transporte financiado con fondos del Gobierno Regional, identificados con nombre completo, RUT y otros datos. En caso de que este servicio sea entregado a menores de edad deberá firmar un adulto responsable.</p>
+        
+        <form action="#" method="POST" enctype="multipart/form-data">
+            <h4>Datos del traslado:</h4>
+            <div class="form-group">
+                <label for="codigo_fndr_traslado">Código FNDR <span class="required"></span></label>
+                <input type="text" id="codigo_fndr_traslado" name="codigo_fndr_traslado" required>
+            </div>
+            <div class="form-group">
+                <label for="institucion_responsable_traslado">Institución responsable <span class="required"></span></label>
+                <input type="text" id="institucion_responsable_traslado" name="institucion_responsable_traslado" required>
+            </div>
+            <div class="form-group">
+                <label for="fecha_servicio_traslado">Fecha del servicio <span class="required"></span></label>
+                <input type="date" id="fecha_servicio_traslado" name="fecha_servicio_traslado" required>
+            </div>
+            <div class="form-group">
+                <label for="nombre_proveedor_servicio">Nombre proveedor del servicio <span class="required"></span></label>
+                <input type="text" id="nombre_proveedor_servicio" name="nombre_proveedor_servicio" required>
+            </div>
+            
+            <h4>Firmas:</h4>
+            <div class="form-group">
+                <label for="firma_proveedor_traslado">Firma y timbre proveedor de producto o servicio <span class="required"></span></label>
+                <input type="file" id="firma_proveedor_traslado" name="firma_proveedor_traslado" accept="image/*,application/pdf" required>
+                <small class="small-text">Suba la firma y timbre en formato JPG, PNG o PDF</small>
+            </div>
+            <div class="form-group">
+                <label for="firma_representante_traslado">Firma y timbre representante legal <span class="required"></span></label>
+                <input type="file" id="firma_representante_traslado" name="firma_representante_traslado" accept="image/*,application/pdf" required>
+                <small class="small-text">Suba la firma y timbre en formato JPG, PNG o PDF</small>
+            </div>
+            
+            <hr>
+            
+            <h3>Nómina de beneficiarios(as) directos del traslado:</h3>
+            <p>(Agregar tantas filas como sea necesario)</p>
+            <table id="beneficiarios_traslado-table">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nombres y Apellidos</th>
+                        <th>RUT</th>
+                        <th>Teléfono</th>
+                        <th>Firma</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="number" name="traslado_beneficiario_numero[]" min="1" required></td>
+                        <td><input type="text" name="traslado_beneficiario_nombre[]" required></td>
+                        <td><input type="text" name="traslado_beneficiario_rut[]" required></td>
+                        <td><input type="tel" name="traslado_beneficiario_telefono[]" pattern="[0-9]{9,15}" required></td>
+                        <td><input type="file" name="traslado_beneficiario_firma[]" accept="image/*,application/pdf" required></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="add-row-btn" onclick="agregarFilaBeneficiarioTraslado()">Agregar Beneficiario de Traslado</button>
+            
+            <p><strong>Nota:</strong> Adjunte tantas planillas sean necesarias para completar la totalidad de la entrega.</p>
+            
+            <div class="form-group">
+                <label for="nombre_representante_traslado">Nombre representante legal <span class="required"></span></label>
+                <input type="text" id="nombre_representante_traslado" name="nombre_representante_traslado" required>
+            </div>
+            <div class="form-group">
+                <label for="firma_timbre_representante_traslado">Firma y Timbre <span class="required"></span></label>
+                <input type="file" id="firma_timbre_representante_traslado" name="firma_timbre_representante_traslado" accept="image/*,application/pdf" required>
+                <small class="small-text">Suba su firma y timbre en formato JPG, PNG o PDF</small>
+            </div>
+            
+            <hr>
+            
+            <button type="submit" class="submit-btn">Enviar Bitácora de Traslado</button>
+        </form>
+    </div>
+
+    <script>
+        function agregarFilaBeneficiarioTraslado() {
+            const tableBody = document.getElementById('beneficiarios_traslado-table').getElementsByTagName('tbody')[0];
+            const rowCount = tableBody.rows.length + 1;
+
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><input type="number" name="traslado_beneficiario_numero[]" min="1" value="${rowCount}" required></td>
+                <td><input type="text" name="traslado_beneficiario_nombre[]" required></td>
+                <td><input type="text" name="traslado_beneficiario_rut[]" required></td>
+                <td><input type="tel" name="traslado_beneficiario_telefono[]" pattern="[0-9]{9,15}" required></td>
+                <td><input type="file" name="traslado_beneficiario_firma[]" accept="image/*,application/pdf" required></td>
+            `;
+            tableBody.appendChild(newRow);
+        }
+    </script>
+</body>
+</html>
