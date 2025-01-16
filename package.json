@@ -4,7 +4,9 @@
   "description": "Chatbot informativo diseñado para asistir a los beneficiarios del Concurso de Vinculación con la Comunidad 8% FNDR 2024 durante la etapa de rendición.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/style.css --watch",
+    "build:prod": "tailwindcss -i ./static/css/tailwind.css -o ./static/css/style.css --minify"
   },
   "repository": {
     "type": "git",
