@@ -16,6 +16,7 @@ class DevelopmentConfig(Config):
     """Configuración de desarrollo"""
     DEBUG = True
     DEVELOPMENT = True
+    SQLALCHEMY_ECHO = True
 
 class ProductionConfig(Config):
     """Configuración de producción"""

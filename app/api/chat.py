@@ -1,8 +1,9 @@
 from flask import Blueprint, request, jsonify
 from ..services.chat_service import ChatService
-from flask_cors import cross_origin
+from flask_cors import CORS, cross_origin
 
 chat_bp = Blueprint('chat', __name__)
+CORS(chat_bp)
 chat_service = ChatService()
 
 @chat_bp.route('/chat/session', methods=['POST'])
@@ -16,6 +17,7 @@ def create_session():
             'session_id': session.session_id
         }), 201
     except Exception as e:
+        print(f"Error creating session: {str(e)}")
         return jsonify({
             'success': False,
             'error': str(e)

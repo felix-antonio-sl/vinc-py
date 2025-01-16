@@ -1,8 +1,8 @@
 import os
-from openai import OpenAI
-from ..models import db
-from ..models.chat import ChatSession, ChatMessage
 import uuid
+from app.models.chat import ChatSession, ChatMessage
+from app.models import db
+from openai import OpenAI
 
 class ChatService:
     def __init__(self):
@@ -83,7 +83,7 @@ class ChatService:
         try:
             # Obtener respuesta de OpenAI
             response = self.client.chat.completions.create(
-                model="gpt-4",
+                model="gpt-4o",
                 messages=messages,
                 temperature=0.7,
                 max_tokens=1000
@@ -114,6 +114,5 @@ class ChatService:
         """Obtener historial de chat"""
         session = self.get_session(session_id)
         if not session:
-            return []
-        
+            return None
         return [msg.to_dict() for msg in session.messages] 
