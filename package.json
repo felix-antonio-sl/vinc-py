@@ -1,0 +1,26 @@
+{
+  "name": "vinc-py",
+  "version": "1.0.0",
+  "description": "Chatbot informativo diseñado para asistir a los beneficiarios del Concurso de Vinculación con la Comunidad 8% FNDR 2024 durante la etapa de rendición.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/felix-antonio-sl/vinc-py.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/felix-antonio-sl/vinc-py/issues"
+  },
+  "homepage": "https://github.com/felix-antonio-sl/vinc-py#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "daisyui": "^4.12.23"
+  }
+}
