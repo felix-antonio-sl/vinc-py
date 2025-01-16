@@ -1,14 +1,12 @@
 import os
 import uuid
+import openai
 from app.models.chat import ChatSession, ChatMessage
 from app.models import db
-from openai import OpenAI
 
 class ChatService:
     def __init__(self):
-        self.client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
-        
-        # Cargar el contenido de los archivos de contexto
+        openai.api_key = os.getenv('OPENAI_API_KEY')
         self.context = self._load_context_files()
 
     def _load_context_files(self):
