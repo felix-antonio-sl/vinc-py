@@ -55,3 +55,85 @@ openai.key
 *.pem
 *.key
 *.crt
+*.cer
+*.p12
+*.pfx
+.env.production
+secrets/
+
+# Testing
+__tests__/
+test/
+coverage/
+.coverage
+htmlcov/
+.pytest_cache/
+pytest.ini
+
+# Desarrollo
+.env.development
+.env.local
+.env.*.local
+
+# IDEs y editores adicionales
+*.sublime-project
+*.sublime-workspace
+.settings/
+.project
+.classpath
+.eclipse
+.netbeans/
+nbproject/
+.vs/
+*.code-workspace
+
+# Caché y compilación
+*.pyc
+*.pyo
+*.pyd
+.Python
+__pycache__/
+.sass-cache/
+node_modules/
+.npm/
+.yarn/
+
+# Documentación
+docs/_build/
+docs/api/
+_site/
+.docusaurus/
+
+# Recursos temporales
+recursos/temp/
+recursos/cache/
+recursos/uploads/
+
+# Backups y archivos temporales
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.temp
+
+# Logs
+logs/
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos específicos del proyecto
+/static/generated/
+/media/uploads/
+instance/
+.openai/
+openai.key
+
+# Archivos de configuración local
+config.local.py
+settings.local.py
