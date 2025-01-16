@@ -44,10 +44,16 @@ def send_message():
             'success': True,
             **response
         }), 200
-    except Exception as e:
+    except ValueError as e:
         return jsonify({
             'success': False,
-            'error': str(e)
+            'error': f"Error de configuración: {str(e)}"
+        }), 400
+    except Exception as e:
+        print(f"Error al procesar mensaje: {str(e)}")
+        return jsonify({
+            'success': False,
+            'error': f"Error al procesar mensaje: {str(e)}"
         }), 500
 
 @chat_bp.route('/chat/history/<session_id>', methods=['GET'])
