@@ -83,34 +83,24 @@
         // Limpiar el input
         messageInput.value = "";
 
+        // Enviar el mensaje al asistente
         try {
           const response = await fetch("/api/chat/message", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-              session_id: sessionId,
-              message: message,
-            }),
+            body: JSON.stringify({ session_id: sessionId, message }),
           });
           const data = await response.json();
           if (data.success) {
             appendMessage("Asistente", data.response, 'assistant');
           } else {
-            appendMessage(
-              "Error",
-              "Hubo un problema al procesar tu mensaje.",
-              "bg-red-100 text-red-800"
-            );
+            appendMessage("Asistente", "Hubo un error al procesar tu solicitud.", 'assistant');
           }
         } catch (error) {
           console.error("Error:", error);
-          appendMessage(
-            "Error",
-            "Hubo un problema al conectar con el servidor.",
-            "bg-red-100 text-red-800"
-          );
+          appendMessage("Asistente", "Hubo un problema al conectar con el servidor.", 'assistant');
         }
       });
 
@@ -128,8 +118,8 @@
             </div>
             <div class="chat-bubble ${
                 type === 'user' 
-                    ? 'chat-bubble-primary' 
-                    : 'chat-bubble-accent'
+                    ? 'bg-gray-200 text-gray-800 rounded-lg'
+                    : 'bg-white text-gray-700'
             }">
                 ${messageContent}
             </div>
