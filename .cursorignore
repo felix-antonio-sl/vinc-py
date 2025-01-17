@@ -16,6 +16,7 @@ ENV/
 *.sqlite
 *.db
 *.sql
+/chromadb/
 
 # Archivos de sistema
 .DS_Store

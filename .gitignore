@@ -43,7 +43,7 @@ wheels/
 *.db
 *.sql
 *.dump
-
+/chromadb/
 # Archivos de sistema
 .DS_Store
 Thumbs.db
@@ -111,3 +111,5 @@ site/
 *.crt
 *.cer
 *.p12
+cognisoma/formularios.txt
+data/chromadb
