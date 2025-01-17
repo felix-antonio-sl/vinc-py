@@ -2,7 +2,7 @@
 <html lang="es" data-theme="light">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chatbot FNDR 8%</title>
     <link
       href="{{ url_for('static', filename='css/style.css') }}"
@@ -14,27 +14,29 @@
     ></script>
   </head>
   <body class="min-h-screen bg-base-200">
-    <div class="container mx-auto px-4 py-8 flex justify-center items-center min-h-screen">
+    <div
+      class="container mx-auto px-4 py-8 flex justify-center items-center min-h-screen"
+    >
       <div class="card w-full max-w-2xl bg-base-100 shadow-xl">
         <div class="card-body">
           <h2 class="card-title justify-center text-2xl font-bold mb-6">
             Asistente de Rendición FNDR 8%
           </h2>
-          
-          <div id="chat-window" 
-               class="h-[500px] overflow-y-auto mb-6 rounded-box bg-base-200 p-4 space-y-4">
-          </div>
+
+          <div
+            id="chat-window"
+            class="h-[500px] overflow-y-auto mb-6 rounded-box bg-base-200 p-4 space-y-4"
+          ></div>
 
           <form id="chat-form" class="input-group">
-            <input type="text"
-                   id="message-input"
-                   class="input input-bordered flex-1"
-                   placeholder="Escribe tu mensaje..."
-                   required />
-            <button type="submit" 
-                    class="btn btn-primary">
-              Enviar
-            </button>
+            <input
+              type="text"
+              id="message-input"
+              class="input input-bordered flex-1"
+              placeholder="Escribe tu mensaje..."
+              required
+            />
+            <button type="submit" class="btn btn-primary">Enviar</button>
           </form>
         </div>
       </div>
@@ -75,7 +77,7 @@
         if (!message) return;
 
         // Mostrar el mensaje del usuario
-        appendMessage("Tú", message, "bg-blue-100 text-blue-800 self-end");
+        appendMessage("Tú", message, 'user');
 
         // Limpiar el input
         messageInput.value = "";
@@ -93,11 +95,7 @@
           });
           const data = await response.json();
           if (data.success) {
-            appendMessage(
-              "Asistente",
-              data.response,
-              "bg-gray-100 text-gray-800"
-            );
+            appendMessage("Asistente", data.response, 'assistant');
           } else {
             appendMessage(
               "Error",
@@ -118,13 +116,10 @@
       // Función para agregar mensajes al chat
       function appendMessage(author, message, type = 'user') {
         const messageElement = document.createElement("div");
-        const classes = type === 'user' 
-          ? 'chat chat-end' 
-          : type === 'assistant' 
-          ? 'chat chat-start' 
-          : 'chat chat-start text-error';
-
-        messageElement.className = classes;
+        
+        // Configurar las clases según el tipo de mensaje
+        messageElement.className = `chat ${type === 'user' ? 'chat-end' : 'chat-start'}`;
+        
         messageElement.innerHTML = `
           <div class="chat-header opacity-50">
             ${author}
@@ -132,15 +127,18 @@
           <div class="chat-bubble ${
             type === 'user' 
               ? 'chat-bubble-primary' 
-              : type === 'assistant'
-              ? 'chat-bubble-accent'
-              : 'chat-bubble-error'
+              : 'chat-bubble-accent'
           }">
             ${message}
           </div>
         `;
         
         chatWindow.appendChild(messageElement);
+        
+        // Aplicar la transición suave definida en tailwind.css
+        messageElement.classList.add('chat-message-transition');
+        
+        // Scroll al último mensaje
         chatWindow.scrollTop = chatWindow.scrollHeight;
       }
     </script>
