@@ -60,6 +60,8 @@ class ChatService:
 
                 {self.context}
 
+                IMPORTANTE: Formatea TODAS tus respuestas usando Markdown.
+                Usa encabezados (##), listas (-), énfasis (**), y otros elementos de Markdown cuando sea apropiado.
                 Responde de manera clara, precisa y en español. Si no estás seguro de algo, indícalo.
                 """
             }

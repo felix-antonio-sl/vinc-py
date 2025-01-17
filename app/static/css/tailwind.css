@@ -3,6 +3,25 @@
 @tailwind utilities;
 
 @layer components {
+  .chat-bubble {
+    @apply prose prose-sm prose-invert max-w-none;
+  }
+  
+  .chat-bubble h1, 
+  .chat-bubble h2, 
+  .chat-bubble h3 {
+    @apply text-current mt-1 mb-2;
+  }
+  
+  .chat-bubble ul, 
+  .chat-bubble ol {
+    @apply my-1;
+  }
+  
+  .chat-bubble p {
+    @apply my-1;
+  }
+  
   .chat-message-transition {
     @apply transition-all duration-300 ease-in-out;
   }

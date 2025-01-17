@@ -12,6 +12,7 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
       defer
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   </head>
   <body class="min-h-screen bg-base-200">
     <div
@@ -116,29 +117,26 @@
       // Función para agregar mensajes al chat
       function appendMessage(author, message, type = 'user') {
         const messageElement = document.createElement("div");
-        
-        // Configurar las clases según el tipo de mensaje
         messageElement.className = `chat ${type === 'user' ? 'chat-end' : 'chat-start'}`;
         
+        // Convertir Markdown a HTML solo para mensajes del asistente
+        const messageContent = type === 'assistant' ? marked.parse(message) : message;
+        
         messageElement.innerHTML = `
-          <div class="chat-header opacity-50">
-            ${author}
-          </div>
-          <div class="chat-bubble ${
-            type === 'user' 
-              ? 'chat-bubble-primary' 
-              : 'chat-bubble-accent'
-          }">
-            ${message}
-          </div>
+            <div class="chat-header opacity-50">
+                ${author}
+            </div>
+            <div class="chat-bubble ${
+                type === 'user' 
+                    ? 'chat-bubble-primary' 
+                    : 'chat-bubble-accent'
+            }">
+                ${messageContent}
+            </div>
         `;
         
         chatWindow.appendChild(messageElement);
-        
-        // Aplicar la transición suave definida en tailwind.css
         messageElement.classList.add('chat-message-transition');
-        
-        // Scroll al último mensaje
         chatWindow.scrollTop = chatWindow.scrollHeight;
       }
     </script>
