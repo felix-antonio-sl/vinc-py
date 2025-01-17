@@ -13,8 +13,8 @@ class ChatService:
         """Cargar archivos de contexto"""
         context = ""
         files = [
-            "recursos/punto-de-partida.txt",
-            "recursos/resumen-instructivo.txt"
+            "cognisoma/formularios.txt",
+            "cognisoma/instructivo24.txt"
         ]
         
         for file_path in files:
