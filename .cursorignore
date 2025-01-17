@@ -133,6 +133,7 @@ yarn-error.log*
 instance/
 .openai/
 openai.key
+/fx/
 
 # Archivos de configuración local
 config.local.py

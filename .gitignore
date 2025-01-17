@@ -88,6 +88,7 @@ yarn.lock
 *.temp
 .env.production
 .env.development
+/fx/
 
 # Archivos de migración de base de datos
 migrations/versions/

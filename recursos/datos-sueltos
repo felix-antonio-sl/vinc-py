@@ -1,2 +1,0 @@
-sudo -u postgres psql -c "CREATE DATABASE vincdb OWNER vincuser;"
-sudo -u postgres psql -c "CREATE USER vincuser WITH PASSWORD 'vincpass';"
