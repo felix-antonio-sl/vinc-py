@@ -27,9 +27,11 @@
           <div
             id="chat-window"
             class="h-[500px] overflow-y-auto mb-6 rounded-box bg-base-200 p-4 space-y-4"
-          ></div>
+          >
+            <!-- Mensajes del chat se agregarán aquí -->
+          </div>
 
-          <form id="chat-form" class="input-group">
+          <form id="chat-form" class="flex gap-2">
             <input
               type="text"
               id="message-input"
@@ -37,7 +39,35 @@
               placeholder="Escribe tu mensaje..."
               required
             />
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 10l9 5 9-5-9-5-9 5z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 15v6"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M8 21h8"
+                />
+              </svg>
+              Enviar
+            </button>
           </form>
         </div>
       </div>
@@ -83,6 +113,9 @@
         // Limpiar el input
         messageInput.value = "";
 
+        // Mostrar indicador de carga
+        const loadingMessage = appendMessage("Asistente", "Cargando...", 'assistant', true);
+
         // Enviar el mensaje al asistente
         try {
           const response = await fetch("/api/chat/message", {
@@ -94,18 +127,21 @@
           });
           const data = await response.json();
           if (data.success) {
+            chatWindow.removeChild(loadingMessage);
             appendMessage("Asistente", data.response, 'assistant');
           } else {
+            chatWindow.removeChild(loadingMessage);
             appendMessage("Asistente", "Hubo un error al procesar tu solicitud.", 'assistant');
           }
         } catch (error) {
           console.error("Error:", error);
+          chatWindow.removeChild(loadingMessage);
           appendMessage("Asistente", "Hubo un problema al conectar con el servidor.", 'assistant');
         }
       });
 
       // Función para agregar mensajes al chat
-      function appendMessage(author, message, type = 'user') {
+      function appendMessage(author, message, type = 'user', isLoading = false) {
         const messageElement = document.createElement("div");
         messageElement.className = `chat ${type === 'user' ? 'chat-end' : 'chat-start'}`;
         
@@ -113,21 +149,28 @@
         const messageContent = type === 'assistant' ? marked.parse(message) : message;
         
         messageElement.innerHTML = `
-            <div class="chat-header opacity-50">
-                ${author}
-            </div>
-            <div class="chat-bubble ${
-                type === 'user' 
-                    ? 'bg-gray-200 text-gray-800 rounded-lg'
-                    : 'bg-white text-gray-700'
-            }">
-                ${messageContent}
-            </div>
+          <div class="chat-header opacity-50">
+              ${author}
+          </div>
+          <div class="chat-bubble ${
+              type === 'user' 
+                  ? 'bg-gray-200 text-gray-800 rounded-lg'
+                  : 'bg-white text-gray-700'
+          } ${isLoading ? 'animate-pulse' : ''}">
+              ${messageContent}
+          </div>
         `;
         
         chatWindow.appendChild(messageElement);
-        messageElement.classList.add('chat-message-transition');
-        chatWindow.scrollTop = chatWindow.scrollHeight;
+
+        if (!isLoading) {
+          // Animación de transición
+          messageElement.classList.add('chat-message-transition');
+          // Scroll automático al final
+          chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        return messageElement;
       }
     </script>
   </body>

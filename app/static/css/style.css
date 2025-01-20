@@ -2307,8 +2307,16 @@ html {
   margin-bottom: 1.5rem;
 }
 
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
 .flex {
   display: flex;
+}
+
+.h-5 {
+  height: 1.25rem;
 }
 
 .h-\[500px\] {
@@ -2317,6 +2325,10 @@ html {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.w-5 {
+  width: 1.25rem;
 }
 
 .w-full {
@@ -2331,12 +2343,26 @@ html {
   flex: 1 1 0%;
 }
 
+@keyframes pulse {
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
 .items-center {
   align-items: center;
 }
 
 .justify-center {
   justify-content: center;
+}
+
+.gap-2 {
+  gap: 0.5rem;
 }
 
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
